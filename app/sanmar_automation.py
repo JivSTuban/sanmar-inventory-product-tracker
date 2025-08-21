@@ -3,8 +3,14 @@ import time
 import re
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import urljoin, urlparse, parse_qs
-from bs4 import BeautifulSoup
 import streamlit as st
+
+# Robust BeautifulSoup import with fallback
+try:
+    from bs4 import BeautifulSoup
+except ImportError as e:
+    st.error(f"Failed to import BeautifulSoup: {e}")
+    st.stop()
 
 
 class SanMarAutomation:
